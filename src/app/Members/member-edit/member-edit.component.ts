@@ -31,7 +31,7 @@ export class MemberEditComponent implements OnInit {
   constructor(private route: ActivatedRoute, private alert: AlertifyService,
     private servive: UserServiceService, private authServie: AuthServiceService ) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.route.data.subscribe( data => {
       this.user = data['user'];
     });
@@ -47,14 +47,12 @@ export class MemberEditComponent implements OnInit {
         this.alert.success('successfully saved');
         this.editForm.reset(this.user);
       }, err => {
-        console.log(this.user);
         this.alert.error(err);
       }
     );
   }
 
   updateMain(Url){
-    console.log(Url);
    this.user.photoURL= Url;
   }
 }

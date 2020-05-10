@@ -17,6 +17,7 @@ export class membereditResolver implements Resolve<User> {
         }
 
         resolve(route: ActivatedRouteSnapshot): Observable<User>{
+
             return this.service.getUser(this.authservice.UserName.nameid).pipe(
                 catchError( error => {
                     this.alert.error('problem with your data');

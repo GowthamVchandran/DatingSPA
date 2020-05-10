@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA, Renderer2    } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA    } from '@angular/core';
+
 import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -27,7 +30,13 @@ import { membereditResolver } from './_resolvers/member-edit-resolver';
 import { preventUnsavedChanges } from './_guard/prevent-unsaved-changes-guard';
 import { PhotoEditorComponent } from './Members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { listResolver } from './_resolvers/list-resolver';
+import { messagesResolver } from './_resolvers/messages.resolver';
+import { ListComponent } from './list/list.component';
+import { MemberTestComponent } from './Members/member-test/member-test.component';
+import { MemberMessageComponent } from './Members/member-messages/member-message.component';
 
+//import {TimeAgoPipe} from 'time-ago-pipe';
 //import { NgxGalleryModule } from 'ngx-gallery';
 
 export function tokenGetter(){
@@ -46,16 +55,24 @@ export function tokenGetter(){
       MemberCardComponent,
       MemberdetailComponent,
       MemberEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      ListComponent,
+      MemberMessageComponent
    ],
+   schemas: [
+      CUSTOM_ELEMENTS_SCHEMA
+  ],
    imports: [
       BrowserModule,
       TabsModule.forRoot(),
+      PaginationModule.forRoot(),
       HttpClientModule,
       FormsModule,
+      ReactiveFormsModule,
   //    NgxGalleryModule,
        FileUploadModule,
       BsDropdownModule.forRoot(),
+       ButtonsModule.forRoot(),
       RouterModule.forRoot(Approute),
       JwtModule.forRoot({
          config : {
@@ -65,7 +82,6 @@ export function tokenGetter(){
          }
       })
    ],
-   exports:[MemberListComponent],
    providers: [
       {
          provide: HTTP_INTERCEPTORS,
@@ -79,7 +95,9 @@ export function tokenGetter(){
        memberdetailResolver,
        memberlistResolver,
        membereditResolver,
-       preventUnsavedChanges
+       preventUnsavedChanges,
+       listResolver,
+       messagesResolver
    ],
    bootstrap: [
       ValuesComponent

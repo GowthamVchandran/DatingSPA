@@ -13,7 +13,6 @@ export class ValuesComponent implements OnInit {
 
   Value: any;
 
-
   jwtHelper = new JwtHelperService();
   constructor(private service: AuthServiceService ) {
   }
@@ -31,7 +30,7 @@ this.service.UserName = this.jwtHelper.decodeToken(token);
   this.service.changeMemberPhoto(user.photoURL);
  }
 
-  }
+}
 
  
 

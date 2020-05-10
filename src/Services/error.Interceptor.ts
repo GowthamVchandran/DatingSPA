@@ -9,8 +9,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     req: import('@angular/common/http').HttpRequest<any>,
     next: import('@angular/common/http').HttpHandler):
     import('rxjs').Observable<import('@angular/common/http').HttpEvent<any>> {
-        console.log('Inter');
-
         return next.handle(req).pipe(
             catchError(error => {
 
@@ -41,8 +39,3 @@ export class ErrorInterceptor implements HttpInterceptor {
     }
 }
 
-// export const ErrorInterceptorProvider = {
-//     provider : HTTP_INTERCEPTORS,
-//     useClass : ErrorInterceptor,
-//     multi : true
-// };

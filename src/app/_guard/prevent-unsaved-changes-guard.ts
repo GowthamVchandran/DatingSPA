@@ -10,5 +10,6 @@ export class preventUnsavedChanges implements CanDeactivate<MemberEditComponent>
         if(component.editForm.dirty){
         return confirm('Are you sure want to continue? unsaved data will be lost.');
         }
+        return true;
     }
 }

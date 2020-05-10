@@ -30,17 +30,17 @@ changeMemberPhoto(photoUrl: string) {
 
 login(model: any){
 
-  return this.client.post(this.baseUrl + 'login',model).pipe(
+  return this.client.post(this.baseUrl + 'login', model).pipe(
     map( (response: any) => {
        const user = response;
-       console.log(user);
+       console.log();
        if (user) {
-
         this.storeUserDetail_In_localStorage(user);
         this.changeMemberPhoto(this.CurrentUser.photoURL);
        }
     })
   );
+  
 }
 
 storeUserDetail_In_localStorage(current: any): void {
@@ -52,8 +52,8 @@ storeUserDetail_In_localStorage(current: any): void {
 
 }
 
-Register(model : any){
-  return this.client.post(this.baseUrl+'Register',model);
+Register(model : User){
+  return this.client.post(this.baseUrl+'Register', model);
 }
 
 loggedIn() {

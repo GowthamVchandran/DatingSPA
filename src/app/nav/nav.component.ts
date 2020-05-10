@@ -3,8 +3,6 @@ import { AuthServiceService } from '../../Services/Auth.service';
 import { AlertifyService } from 'src/Services/alertify.service';
 import {  Router } from '@angular/router';
 
-
-
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -15,7 +13,8 @@ export class NavComponent implements OnInit {
   model: any = {};
   photoUrl: string;
 
-  constructor(public service: AuthServiceService, private alertify: AlertifyService,private routelink: Router) { }
+  constructor(public service: AuthServiceService,
+  private alertify: AlertifyService, private routelink: Router) { }
 
   ngOnInit() {
     this.service.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
@@ -30,6 +29,7 @@ export class NavComponent implements OnInit {
     });
 
   }
+
 
   loggedIn(){
     return this.service.loggedIn();
