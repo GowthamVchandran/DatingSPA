@@ -23,7 +23,7 @@ export class NavComponent implements OnInit {
     this.service.login(this.model).subscribe(res => {
      this.alertify.success('Logged in successfully');
     }, err => {
-      console.log(err);
+      
       this.alertify.error(err);
     },()=>{
       this.routelink.navigate(['/member']);

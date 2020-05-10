@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ApiURL: 'http://localhost:5000/api/'
+  ApiURL: 'http://localhost/DatingAPI/api/'
 };
 
 /*
