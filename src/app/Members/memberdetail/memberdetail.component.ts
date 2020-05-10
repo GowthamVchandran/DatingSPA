@@ -41,7 +41,7 @@ export class MemberdetailComponent implements OnInit {
     this.userservice.getUser(+this.route.snapshot.params['id']).subscribe((user: User) => {
         this.user = user;
     }, err => {
-
+      console.log(err);
       this.alert.error(err);
     });
   }

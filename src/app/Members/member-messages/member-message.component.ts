@@ -44,7 +44,7 @@ export class MemberMessageComponent implements OnInit {
    }); 
   }
 
-  sendMessage(){
+  sendMessage(){    
     this.newMessage.recipientId = this.recipientId;
     this.service.sendMessage(this.authService.UserName.nameid, this.newMessage)
       .subscribe( (message: Message) => {
@@ -52,6 +52,7 @@ export class MemberMessageComponent implements OnInit {
         this.newMessage.content = '';
 
       },err =>{
+        console.log(err);
         this.alertMsg.error(err);
       });
 
